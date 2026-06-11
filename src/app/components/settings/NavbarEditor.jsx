@@ -7,8 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 export default function NavbarEditor() {
   const [navbarData, setNavbarData] = useState({
     restaurant: {
-      name: "MD Burger & Broast",
-      openingHours: "05:00 PM to 3:00 AM"
+      name: "Freshs.pk",
+      openingHours: "09:00 AM – 12:00 AM"
     },
     delivery: {
       time: "30-45 mins",
@@ -16,10 +16,10 @@ export default function NavbarEditor() {
     },
     socialLinks: [
       { platform: "menu", icon: "/download.webp", isMenu: true, menuFile: "/md-menu.pdf" },
-      { platform: "whatsapp", icon: "/whatsapp-logo.webp", url: "https://wa.me/923455820200" },
+      { platform: "whatsapp", icon: "/whatsapp-logo.webp", url: "https://wa.me/923362069023" },
       { platform: "phone", icon: "/phone.webp", url: "tel:+92111822111" },
-      { platform: "facebook", icon: "/facebook.webp", url: "https://www.facebook.com/mdburgerbroast" },
-      { platform: "tiktok", icon: "/instagram.png", url: "https://www.tiktok.com/mdburger" }
+      { platform: "facebook", icon: "/facebook.webp", url: "https://www.facebook.com/profile.php?id=100083161330618" },
+      { platform: "instagram", icon: "/instagram.png", url: "https://www.instagram.com/freshs.pk/" }
     ],
     updatedAt: new Date()
   });

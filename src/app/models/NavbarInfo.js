@@ -10,8 +10,8 @@ const SocialLinkSchema = new mongoose.Schema({
 
 const NavbarInfoSchema = new mongoose.Schema({
   restaurant: {
-    name: { type: String, required: true, default: "MD Burger & Broast" },
-    openingHours: { type: String, required: true, default: "05:00 PM to 3:00 AM" }
+    name: { type: String, required: true, default: "Freshs.pk" },
+    openingHours: { type: String, required: true, default: "09:00 AM – 12:00 AM" }
   },
   delivery: {
     time: { type: String, required: true, default: "30-45 mins" },

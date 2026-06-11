@@ -9,20 +9,20 @@ import 'swiper/css'
 export default function Footer() {
   const [footerData, setFooterData] = useState({
     restaurant: {
-      name: "MD Burger & Broast",
-      address: "Clifton Center، Shop No 1, Clifton Shopping Arcade، Bank Road, Block 5 Clifton, Karachi, 75600",
-      description: "The best food in Town! Established in 1993. At the time of opening we started with the bun kabab's but now we have opened the complete FAST FOOD and BAR-B-Q. Just all pure are being used here.",
-      establishedYear: 1993,
-      mapsLink: "https://maps.app.goo.gl/iLFtzPRK4iR1Yc9P9"
+      name: "Freshs.pk",
+      address: "Nazimabad No.5, Karachi",
+      description: "Freshs.pk – Your one-stop online grocery store, delivering farm-fresh quality, unbeatable convenience, and savings right to your doorstep!",
+      establishedYear: 2024,
+      mapsLink: "https://maps.google.com"
     },
     contact: {
-      uanNumber: "021 - 111 822 111",
-      whatsappNumbers: ["+92 345 5820200"],
-      openingHours: "05:00 PM to 3:00 AM"
+      uanNumber: "+92 336 2069023 | +92 317 2729591",
+      whatsappNumbers: ["+92 336 2069023"],
+      openingHours: "09:00 AM – 12:00 AM"
     },
     appLinks: {
-      appStore: "https://restaurant-website-pi-rouge.vercel.app/",
-      googlePlay: "https://restaurant-website-pi-rouge.vercel.app/"
+      appStore: "",
+      googlePlay: ""
     },
     developer: {
       name: "ZABS Creatives",
@@ -103,7 +103,7 @@ export default function Footer() {
     <footer className="bg-white border-t">
       <div className="max-w-7xl mx-auto px-4 pb-12 sm:px-6 lg:px-8 relative">
         <Link href="/">
-          <div className="relative rounded-full border-4 border-yellow-400 w-32 h-32 bg-white left-1/2 top-[0px] transform -translate-x-1/2 -translate-y-1/2 z-10 overflow-hidden">
+          <div className="relative rounded-full border-4 border-[#689537] w-32 h-32 bg-white left-1/2 top-[0px] transform -translate-x-1/2 -translate-y-1/2 z-10 overflow-hidden">
             {!isLogoLoading && (
               <img 
                 src={getImageUrl(logoData.logo)}
@@ -282,7 +282,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between text-sm text-white space-y-4 sm:space-y-0">
             <p>
-              © 2003 {footerData.restaurant.name}. All Rights Reserved. Develop by{" "}
+              © {new Date().getFullYear()} {footerData.restaurant.name}. All Rights Reserved. Develop by{" "}
               <a
                 href={`https://wa.me/${footerData.developer.contact?.replace(/[^0-9]/g, '')}`}
                 target="_blank"

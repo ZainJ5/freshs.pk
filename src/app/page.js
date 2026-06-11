@@ -25,7 +25,7 @@ export default function Home() {
   const fetchVersionRef = useRef(0); // Track fetch operations
 
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/923455820200", "_blank");
+    window.open("https://wa.me/923362069023", "_blank");
   };
 
   const getId = (idField) => {
@@ -257,7 +257,7 @@ export default function Home() {
             ) : (
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
                 <h2 className="text-2xl font-bold text-gray-700">No menu categories available</h2>
-                <p className="mt-4 text-gray-500">Please check back later or contact the restaurant.</p>
+                <p className="mt-4 text-gray-500">Please check back later or contact us.</p>
               </div>
             )}
           </div>

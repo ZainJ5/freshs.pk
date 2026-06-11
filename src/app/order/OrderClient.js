@@ -260,7 +260,7 @@ function OrderDetailContent() {
                 />
               )}
               <div className="ml-3">
-                <h1 className="font-bold text-lg text-gray-900">King Ice Restaurant</h1>
+                <h1 className="font-bold text-lg text-gray-900">Freshs.pk</h1>
                 <p className="text-sm text-green-600">Open Now</p>
               </div>
             </div>
@@ -269,7 +269,7 @@ function OrderDetailContent() {
                 onClick={() => router.push('/')}
                 className="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center hover:bg-brand-700 transition duration-150"
               >
-                Order More Food
+                Order More Items
               </button>
             </div>
           </div>
@@ -629,7 +629,7 @@ function OrderDetailContent() {
                 onClick={() => router.push('/')}
                 className="flex items-center px-4 py-2 bg-brand-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-brand-700 transition-colors"
               >
-                Order More Food
+                Order More Items
               </button>
             </div>
           </div>
@@ -648,10 +648,10 @@ function OrderDetailContent() {
                     className="h-10 w-auto" 
                   />
                 )}
-                <h3 className="ml-2 font-medium text-gray-900">King Ice Restaurant</h3>
+                <h3 className="ml-2 font-medium text-gray-900">Freshs.pk</h3>
               </div>
               <p className="mt-2 text-sm text-gray-600">
-                Serving delicious meals and refreshing ice cream across Pakistan.
+                Serving farm-fresh quality, unbeatable convenience, and savings right to your doorstep!
               </p>
             </div>
             
@@ -660,11 +660,11 @@ function OrderDetailContent() {
               <ul className="mt-4 space-y-2">
                 <li className="flex items-center text-sm text-gray-600">
                   <Phone className="h-4 w-4 mr-2 text-gray-400" />
-                  <a href="tel:+923122754064" className="hover:text-brand-600">+92 312 2754064</a>
+                  <a href="tel:+923362069023" className="hover:text-brand-600">+92 336 2069023</a>
                 </li>
                 <li className="flex items-center text-sm text-gray-600">
                   <MapPin className="h-4 w-4 mr-2 text-gray-400" />
-                  <span>Landhi, Karachi</span>
+                  <span>Nazimabad No.5, Karachi</span>
                 </li>
               </ul>
             </div>
@@ -684,7 +684,7 @@ function OrderDetailContent() {
           
           <div className="mt-8 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-500 text-center">
-              © {new Date().getFullYear()} King Ice Restaurant. All rights reserved.
+              © {new Date().getFullYear()} Freshs.pk. All rights reserved.
             </p>
           </div>
         </div>

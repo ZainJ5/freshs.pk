@@ -377,7 +377,7 @@ export default function AdminPortal({ onLogout }) {
                   className="object-contain"
                 />
               )}
-              <h1 className="ml-2 text-xl font-bold text-red-700 hidden sm:block">Restaurant Management</h1>
+              <h1 className="ml-2 text-xl font-bold text-red-700 hidden sm:block">Freshs.pk Admin</h1>
             </div>
           </div>
 

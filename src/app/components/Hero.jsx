@@ -126,11 +126,11 @@ function Header() {
           )}
 
           <a 
-            href={`tel:${branch?.phone || '0345 5820200'}`}
+            href={`tel:${branch?.phone || '+923362069023'}`}
             className="hidden sm:flex items-center bg-black text-white rounded-lg px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm"
           >
             <Phone className="h-4 w-4 sm:h-5 w-5 mr-1 text-white" />
-            <span className="font-medium text-xs sm:text-sm">{branch?.phone || '0345 5820200'}</span>
+            <span className="font-medium text-xs sm:text-sm">{branch?.phone || '+92 336 2069023'}</span>
           </a>
         </div>
 
@@ -161,7 +161,7 @@ function Header() {
             className="flex sm:hidden items-center bg-black text-white rounded-lg px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm"
           >
             <Phone className="h-4 w-4 sm:h-5 w-5 mr-1 text-white" />
-            <span className="font-medium text-xs sm:text-sm">{branch?.phone || '0345 5820200'}</span>
+            <span className="font-medium text-xs sm:text-sm">{branch?.phone || '+92 336 2069023'}</span>
           </a>
           
           {/* Desktop Header Cart Icon */}
@@ -176,7 +176,7 @@ function Header() {
 
 export default function Hero() {
   const [heroData, setHeroData] = useState({
-    banners: ['Welcome to MD Burger & Broast'],
+    banners: ['Welcome to Freshs.pk'],
     images: ['/hero.jpg'],
     settings: {
       bannerRotationSpeed: 3000,

@@ -70,8 +70,8 @@ export default function CartDrawer({ isOpen, onClose }) {
       <style jsx global>{`
         .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #dce3f5; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #33449b; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #28367b; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #689537; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #547a2c; }
       `}</style>
 
       <div className="flex flex-col h-full">
@@ -255,7 +255,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                 <p>We Deliver Across Karachi</p>
                 <div className="flex items-center justify-center space-x-2">
                   <span className="text-green-600">✓</span>
-                  <span>From 11:30 am to 3:30 am</span>
+                  <span>From 09:00 am to 12:00 am</span>
                 </div>
               </div>
             </div>
