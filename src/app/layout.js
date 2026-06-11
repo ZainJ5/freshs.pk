@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'Freshs.pk – Online Grocery Store | Farm-Fresh Quality Delivered',
   description: `Freshs.pk – Your one-stop online grocery store, delivering farm-fresh quality, unbeatable convenience, and savings right to your doorstep!`,
+  icons: {
+    icon: [{ url: '/logo.png', type: 'image/png' }],
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({ children }) {
