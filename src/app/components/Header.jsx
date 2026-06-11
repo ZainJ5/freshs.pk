@@ -45,12 +45,12 @@ const Header = () => {
         <div className="flex items-center space-x-3">
           <div className="flex items-center bg-black rounded-full px-3 py-2">
             <MapPin size={16} className="mr-1" />
-            <span className="text-xs font-medium">Regal Lumier Lahore</span>
+            <span className="text-xs font-medium">Nazimabad No.5, Karachi</span>
           </div>
 
           <div className="flex items-center bg-black rounded-full px-3 py-2">
             <Phone size={16} className="mr-1" />
-            <span className="text-xs font-medium">03320222845</span>
+            <span className="text-xs font-medium">+92 336 2069023</span>
           </div>
         </div>
 

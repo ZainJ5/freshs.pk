@@ -15,11 +15,9 @@ export default function NavbarEditor() {
       minimumOrder: "Rs. 500 Only"
     },
     socialLinks: [
-      { platform: "menu", icon: "/download.webp", isMenu: true, menuFile: "/md-menu.pdf" },
-      { platform: "whatsapp", icon: "/whatsapp-logo.webp", url: "https://wa.me/923362069023" },
-      { platform: "phone", icon: "/phone.webp", url: "tel:+92111822111" },
-      { platform: "facebook", icon: "/facebook.webp", url: "https://www.facebook.com/profile.php?id=100083161330618" },
-      { platform: "instagram", icon: "/instagram.png", url: "https://www.instagram.com/freshs.pk/" }
+      { platform: "whatsapp", icon: "/icons/whatsapp.svg", url: "https://wa.me/923362069023" },
+      { platform: "facebook", icon: "/icons/facebook.svg", url: "https://www.facebook.com/profile.php?id=100083161330618" },
+      { platform: "instagram", icon: "/icons/instagram.svg", url: "https://www.instagram.com/freshs.pk/" }
     ],
     updatedAt: new Date()
   });

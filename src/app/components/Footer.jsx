@@ -18,7 +18,8 @@ export default function Footer() {
     contact: {
       uanNumber: "+92 336 2069023 | +92 317 2729591",
       whatsappNumbers: ["+92 336 2069023"],
-      openingHours: "09:00 AM – 12:00 AM"
+      openingHours: "09:00 AM – 12:00 AM",
+      email: "contact@freshs.pk"
     },
     appLinks: {
       appStore: "",
@@ -177,10 +178,22 @@ export default function Footer() {
               </div>
             </div>
 
-            <div>
+            <div className="sm:border-r sm:pr-8 sm:border-r-gray-500">
               <h3 className="font-semibold">Timing</h3>
               <p className="font-bold text-black">{footerData.contact.openingHours}</p>
             </div>
+
+            {footerData.contact.email && (
+              <div>
+                <h3 className="font-semibold">Email</h3>
+                <a
+                  href={`mailto:${footerData.contact.email}`}
+                  className="font-bold text-black hover:underline"
+                >
+                  {footerData.contact.email}
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -157,7 +157,7 @@ function Header() {
           )}
           
           <a 
-            href={`tel:${branch?.phone || '0345 5820200'}`}
+            href={`tel:${branch?.phone || '+923362069023'}`}
             className="flex sm:hidden items-center bg-black text-white rounded-lg px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm"
           >
             <Phone className="h-4 w-4 sm:h-5 w-5 mr-1 text-white" />

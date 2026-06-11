@@ -11,7 +11,8 @@ const FooterInfoSchema = new mongoose.Schema({
   contact: {
     uanNumber: { type: String, required: true },
     whatsappNumbers: [{ type: String, required: true }],
-    openingHours: { type: String, required: true }
+    openingHours: { type: String, required: true },
+    email: { type: String }
   },
   appLinks: {
     appStore: { type: String, required: true },

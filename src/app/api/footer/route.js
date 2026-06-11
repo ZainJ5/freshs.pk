@@ -73,7 +73,8 @@ export async function GET() {
         contact: {
           uanNumber: "",
           whatsappNumbers: [],
-          openingHours: ""
+          openingHours: "",
+          email: ""
         },
         appLinks: {
           appStore: "",

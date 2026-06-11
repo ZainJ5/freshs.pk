@@ -943,20 +943,20 @@ const handlePlaceOrder = async () => {
                     </button>
                     <button
                       type="button"
-                      // onClick={() => {
-                      //   setPaymentMethod("online");
-                      //   setOnlineOption(null);
-                      //   setReceiptFile(null);
-                      // }}
+                      onClick={() => {
+                        setPaymentMethod("online");
+                        setOnlineOption(null);
+                        setReceiptFile(null);
+                      }}
                       className={`p-4 border rounded-md flex flex-col items-center justify-center space-y-2 ${
                         paymentMethod === "online"
                           ? "border-brand-500 bg-brand-50"
-                          : "border-gray-200 opacity-50"
+                          : "border-gray-200"
                       }`}
                     >
                       <FaCreditCard className="text-brand-500" size={24} />
                       <span>Online Payment</span>
-                      <span className="text-xs text-gray-500">(Coming Soon)</span>
+                      <span className="text-xs text-gray-500">(JazzCash / EasyPaisa)</span>
                     </button>
                   </div>
                 </div>
@@ -1312,7 +1312,7 @@ const handlePlaceOrder = async () => {
               {!isSiteActive && (
                 <div className="mt-6 p-4 bg-brand-50 text-brand-700 rounded-md text-center">
                   {/* <p className="font-medium">Service Unavailable</p> */}
-                  <p className="text-sm">Order time is 05:00 PM to 3:00 AM. Please make orders during opening hours.</p>
+                  <p className="text-sm">Order time is 09:00 am to 12:00 am. Please make orders during opening hours.</p>
                 </div>
               )}
               
