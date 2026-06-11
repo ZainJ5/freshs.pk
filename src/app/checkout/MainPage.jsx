@@ -115,16 +115,16 @@ export default function CheckoutPage() {
 
   const easypaisaDetails = {
     title: "EasyPaisa Payment Details",
-    accountNumber: "03101300101",
-    accountName: "Burhan Ahmed",
+    accountNumber: "03172729491",
+    accountName: "Muhammad Jamal",
     instructions:
       "Transfer using the EasyPaisa app and upload a screenshot of your transaction.",
   };
 
   const jazzcashDetails = {
     title: "JazzCash Payment Details",
-    accountNumber: "444555666",
-    accountName: "JazzCash Merchant",
+    accountNumber: "03172729491",
+    accountName: "Muhammad Jamal",
     instructions:
       "Pay via JazzCash and upload a screenshot of your payment confirmation.",
   };
@@ -980,35 +980,27 @@ const handlePlaceOrder = async () => {
                       </button>
                       <button
                         type="button"
-                        // onClick={() => {
-                        //   setOnlineOption("jazzcash");
-                        //   setReceiptFile(null);
-                        // }}
+                        onClick={() => {
+                          setOnlineOption("jazzcash");
+                          setReceiptFile(null);
+                        }}
                         className={`p-4 border rounded-md flex flex-col items-center justify-center space-y-2 ${
                           onlineOption === "jazzcash"
                             ? "border-brand-500 bg-brand-50"
-                            : "border-gray-200 opacity-50"
+                            : "border-gray-200"
                         }`}
                       >
                         <FaCreditCard className="text-brand-500" size={24} />
                         <span>JazzCash</span>
-                        <span className="text-xs text-gray-500">(Coming Soon)</span>
                       </button>
                       <button
                         type="button"
-                        // onClick={() => {
-                        //   setOnlineOption("bank_transfer");
-                        //   setReceiptFile(null);
-                        // }}
-                        className={`p-4 border rounded-md flex flex-col items-center justify-center space-y-2 ${
-                          onlineOption === "bank_transfer"
-                            ? "border-brand-500 bg-brand-50"
-                            : "border-gray-200 opacity-50"
-                        }`}
+                        className="p-4 border rounded-md flex flex-col items-center justify-center space-y-2 border-gray-200 opacity-50 cursor-not-allowed"
+                        disabled
                       >
                         <FaCreditCard className="text-brand-500" size={24} />
                         <span>Bank Transfer</span>
-                        <span className="text-xs text-gray-500">(Coming Soon)</span>
+                        <span className="text-xs text-gray-500">(Disabled)</span>
                       </button>
                     </div>
                     {onlineOption === "easypaisa" && (
