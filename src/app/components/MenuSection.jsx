@@ -23,10 +23,7 @@ export default function MenuSection({ category, subcategories, items, onSectionV
     return url;
   };
 
-  const hasActiveSubcategories = subcategories && subcategories.length > 0 && 
-    subcategories.some(sub => {
-      return items.some(item => getId(item.subcategory) === getId(sub._id));
-    });
+  const hasActiveSubcategories = subcategories && subcategories.length > 0;
 
   const itemCount = items.length;
 
@@ -148,16 +145,14 @@ export default function MenuSection({ category, subcategories, items, onSectionV
         
         {hasActiveSubcategories ? (
           subcategories.map(subcategory => {
-            const subcategoryItems = items.filter(item => 
+            const subcategoryItems = items.filter(item =>
               getId(item.subcategory) === getId(subcategory._id)
             );
-            
-            if (subcategoryItems.length === 0) return null;
-            
+
             return (
-              <div 
-                key={getId(subcategory._id)} 
-                id={`subcategory-${getId(subcategory._id)}`} 
+              <div
+                key={getId(subcategory._id)}
+                id={`subcategory-${getId(subcategory._id)}`}
                 className="mb-12"
               >
                 <div className="bg-gradient-to-r from-brand-700 to-brand-800 text-white rounded-lg overflow-hidden h-24 sm:h-32 mb-8 flex items-center justify-center shadow-lg border-2 border-brand-400 relative">
@@ -166,16 +161,18 @@ export default function MenuSection({ category, subcategories, items, onSectionV
                     <h3 className="text-4xl sm:text-5xl font-bold mb-2">{subcategory.name}</h3>
                   </div>
                 </div>
-                
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-                  {subcategoryItems.map(item => (
-                    <MenuItemCard 
-                      key={getId(item._id)} 
-                      item={item}
-                      getCacheBustedUrl={getCacheBustedUrl}
-                    />
-                  ))}
-                </div>
+
+                {subcategoryItems.length > 0 && (
+                  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
+                    {subcategoryItems.map(item => (
+                      <MenuItemCard
+                        key={getId(item._id)}
+                        item={item}
+                        getCacheBustedUrl={getCacheBustedUrl}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             );
           })
