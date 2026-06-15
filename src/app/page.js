@@ -196,15 +196,6 @@ export default function Home() {
         <Hero />
         <Navbar />
         
-        {/* Branch indicator for debugging */}
-        {branch && isDataValid && (
-          <div className="bg-gray-100 border-b border-gray-200 py-2 px-4 text-center">
-            <span className="text-sm text-gray-600">
-              Viewing menu for: <span className="font-semibold text-gray-900">{branch.name}</span>
-            </span>
-          </div>
-        )}
-        
         <MenuTabs 
           categories={categories} 
           visibleCategory={visibleCategory}
