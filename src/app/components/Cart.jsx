@@ -82,6 +82,10 @@ export default function CartDrawer({ isOpen, onClose }) {
           </button>
         </div>
 
+        <div className="bg-[#08320e] text-white text-center text-xs font-medium py-2 px-3">
+          Same-day delivery is not available. Deliveries are unavailable on Fridays.
+        </div>
+
         <div className="flex-1 overflow-y-auto custom-scrollbar">
           {items.length === 0 ? (
             <div className="p-6 text-center flex flex-col items-center justify-center h-full">

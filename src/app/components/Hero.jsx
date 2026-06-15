@@ -333,6 +333,10 @@ export default function Hero() {
           </>
         )}
       </div>
+
+      <div className="w-full bg-[#08320e] text-white text-center text-xs sm:text-sm font-medium py-2 px-4">
+        Same-day delivery is not available. Deliveries are unavailable on Fridays.
+      </div>
     </section>
   )
 }
