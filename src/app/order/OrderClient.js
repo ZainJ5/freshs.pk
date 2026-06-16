@@ -580,7 +580,7 @@ function OrderDetailContent() {
                   {orderDetails.orderType === "delivery" && (
                     <div className="flex justify-between text-gray-500">
                       <span>Delivery Fee:</span>
-                      <span className="text-gray-900">Rs. {deliveryFee}</span>
+                      <span className="text-gray-900">{deliveryFee === 0 ? "FREE" : `Rs. ${deliveryFee}`}</span>
                     </div>
                   )}
                   

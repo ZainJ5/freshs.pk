@@ -93,8 +93,12 @@ export default function OrderDetailsModal({
     }
   };
 
-  const deliveryFee = selectedOrder.orderType === 'delivery' && area ? 
-    getDeliveryFeeForArea(area) : 0;
+  const storedDeliveryFee = extractValue(selectedOrder.deliveryFee);
+  const deliveryFee = selectedOrder.orderType === 'delivery'
+    ? (storedDeliveryFee !== undefined && storedDeliveryFee !== null
+        ? storedDeliveryFee
+        : (area ? getDeliveryFeeForArea(area) : 0))
+    : 0;
 
   const formatPrice = (price) => {
     if (!price && price !== 0) return "0";
@@ -444,7 +448,7 @@ export default function OrderDetailsModal({
                       <div className="flex justify-between">
                         <span className="text-gray-700 font-semibold">Delivery Fee ({area}):</span>
                         <span className="font-bold text-gray-900">
-                          Rs. {formatPrice(selectedOrder.deliveryFee || deliveryFee)}
+                          {deliveryFee === 0 ? "FREE" : `Rs. ${formatPrice(deliveryFee)}`}
                         </span>
                       </div>
                     )}
@@ -463,7 +467,14 @@ export default function OrderDetailsModal({
                       </div>
                     )}
                     
-                    {(!selectedOrder.globalDiscount && !selectedOrder.promoDiscount && selectedOrder.discount > 0) && (
+                    {selectedOrder.thresholdDiscount > 0 && (
+                      <div className="flex justify-between text-green-700">
+                        <span className="font-semibold">Order Reward:</span>
+                        <span className="font-bold">- Rs. {formatPrice(selectedOrder.thresholdDiscount)}</span>
+                      </div>
+                    )}
+
+                    {(!selectedOrder.globalDiscount && !selectedOrder.promoDiscount && !selectedOrder.thresholdDiscount && selectedOrder.discount > 0) && (
                       <div className="flex justify-between">
                         <span className="text-gray-700 font-semibold">Discount:</span>
                         <span className="font-bold text-yellow-600">- Rs. {formatPrice(extractValue(selectedOrder.discount))}</span>

@@ -520,7 +520,11 @@ export default function OrderDetailPage() {
                             {areaFee !== null && <span className="text-xs ml-1">({extractedArea})</span>}
                           </dt>
                           <dd className="text-gray-900 font-medium">
-                            Rs. {areaFee !== null ? areaFee.toLocaleString() : safeGetNumber(displayOrder.deliveryFee).toLocaleString()}
+                            {displayOrder.deliveryFee != null
+                              ? (safeGetNumber(displayOrder.deliveryFee) === 0
+                                  ? "FREE"
+                                  : `Rs. ${safeGetNumber(displayOrder.deliveryFee).toLocaleString()}`)
+                              : `Rs. ${(areaFee !== null ? areaFee : 0).toLocaleString()}`}
                           </dd>
                         </div>
                       )}

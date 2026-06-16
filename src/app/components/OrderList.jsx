@@ -642,8 +642,12 @@ const printDeliveryPreBill = useCallback(async (order) => {
   const paymentInstructions = orderToPrint.paymentInstructions || '----';
 
   const area = orderToPrint.area || extractAreaFromAddress(orderToPrint.deliveryAddress);
-  const deliveryFee = orderToPrint.orderType === 'delivery' ?
-    getDeliveryFeeForArea(area) : 0;
+  const storedDeliveryFee = extractValue(orderToPrint.deliveryFee);
+  const deliveryFee = orderToPrint.orderType === 'delivery'
+    ? (storedDeliveryFee !== undefined && storedDeliveryFee !== null
+        ? storedDeliveryFee
+        : getDeliveryFeeForArea(area))
+    : 0;
 
   const subtotal = extractValue(orderToPrint.subtotal) || 0;
   const tax = extractValue(orderToPrint.tax) || 0;
@@ -706,7 +710,7 @@ const printDeliveryPreBill = useCallback(async (order) => {
     .replace(/{{itemCount}}/g, itemCount)
     .replace(/{{subtotal}}/g, subtotal)
     .replace(/{{tax}}/g, tax)
-    .replace(/{{deliveryFee}}/g, deliveryFee)
+    .replace(/{{deliveryFee}}/g, deliveryFee === 0 ? 'FREE' : deliveryFee)
     .replace(/{{discountPercentage}}/g, discountPercentage)
     .replace(/{{discount}}/g, discount)
     .replace(/{{total}}/g, total)
@@ -748,8 +752,12 @@ const printDeliveryPaymentReceipt = useCallback(async (order) => {
   const paymentInstructions = orderToPrint.paymentInstructions || '----';
 
   const area = orderToPrint.area || extractAreaFromAddress(orderToPrint.deliveryAddress);
-  const deliveryFee = orderToPrint.orderType === 'delivery' ?
-    getDeliveryFeeForArea(area) : 0;
+  const storedDeliveryFee = extractValue(orderToPrint.deliveryFee);
+  const deliveryFee = orderToPrint.orderType === 'delivery'
+    ? (storedDeliveryFee !== undefined && storedDeliveryFee !== null
+        ? storedDeliveryFee
+        : getDeliveryFeeForArea(area))
+    : 0;
 
   const subtotal = extractValue(orderToPrint.subtotal) || 0;
   const total = extractValue(orderToPrint.total) || 0;
@@ -810,7 +818,7 @@ const printDeliveryPaymentReceipt = useCallback(async (order) => {
     .replace(/{{itemRows}}/g, itemRows)
     .replace(/{{itemCount}}/g, itemCount)
     .replace(/{{subtotal}}/g, subtotal)
-    .replace(/{{deliveryFee}}/g, deliveryFee)
+    .replace(/{{deliveryFee}}/g, deliveryFee === 0 ? 'FREE' : deliveryFee)
     .replace(/{{total}}/g, total)
     .replace(/{{paymentMethod}}/g, paymentMethod)
     .replace(/{{changeRequest}}/g, changeRequest)
