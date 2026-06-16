@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/app/lib/mongoose";
 import Order from "@/app/models/Order";
+import PromoCode from "@/app/models/PromoCode";
 import path from "path";
 import fs from "fs";
 
@@ -75,6 +76,8 @@ export async function POST(request) {
     const subtotal = Number(formData.get("subtotal"));
     const tax = Number(formData.get("tax"));
     const discount = Number(formData.get("discount"));
+    const thresholdDiscount = Number(formData.get("thresholdDiscount")) || 0;
+    const deliveryFee = Number(formData.get("deliveryFee")) || 0;
     const total = Number(formData.get("total"));
     const promoCode = formData.get("promoCode");
     const isGift = formData.get("isGift") === "true";
@@ -158,6 +161,57 @@ export async function POST(request) {
       }
     }
 
+    // Validate and atomically reserve the promo code (authoritative check).
+    // Mobile number is guaranteed present here, so single-use can be enforced.
+    if (promoCode) {
+      const normalizedCode = String(promoCode).toUpperCase();
+      const promo = await PromoCode.findOne({ code: normalizedCode });
+
+      if (!promo || promo.isActive === false) {
+        return NextResponse.json(
+          { message: "The promo code is no longer valid. Please remove it and try again." },
+          { status: 400 }
+        );
+      }
+
+      const guard = { code: normalizedCode, isActive: true };
+      if (promo.maxRedemptions > 0) {
+        guard.totalRedemptions = { $lt: promo.maxRedemptions };
+      }
+      if (promo.usageType === "single") {
+        guard.redeemedMobiles = { $ne: mobileNumber };
+      }
+
+      const reserved = await PromoCode.findOneAndUpdate(
+        guard,
+        {
+          $inc: { totalRedemptions: 1 },
+          $addToSet: { redeemedMobiles: mobileNumber },
+        },
+        { new: true }
+      );
+
+      if (!reserved) {
+        const message =
+          promo.usageType === "single" &&
+          promo.redeemedMobiles.includes(mobileNumber)
+            ? "You have already used this promo code."
+            : "This promo code has reached its usage limit.";
+        return NextResponse.json({ message }, { status: 400 });
+      }
+
+      // Auto-disable once the global cap is reached.
+      if (
+        reserved.maxRedemptions > 0 &&
+        reserved.totalRedemptions >= reserved.maxRedemptions
+      ) {
+        await PromoCode.updateOne(
+          { _id: reserved._id },
+          { $set: { isActive: false } }
+        );
+      }
+    }
+
     let receiptImageUrl = null;
     const file = formData.get("receiptImage");
     if (paymentMethod === "online" && file && file.size > 0) {
@@ -182,10 +236,12 @@ export async function POST(request) {
       paymentInstructions,
       paymentMethod,
       changeRequest,
-      items, 
+      items,
       subtotal,
       tax,
       discount,
+      thresholdDiscount,
+      deliveryFee,
       total,
       promoCode,
       isGift,

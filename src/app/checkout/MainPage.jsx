@@ -30,6 +30,7 @@ export default function CheckoutPage() {
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [receiptFile, setReceiptFile] = useState(null);
   const [deliveryAreas, setDeliveryAreas] = useState([]);
+  const [thresholdOffers, setThresholdOffers] = useState([]);
   const [pickupTime, setPickupTime] = useState("20"); 
   const [orderPlaced, setOrderPlaced] = useState(false);
   
@@ -58,10 +59,32 @@ export default function CheckoutPage() {
   const { items, total, clearCart } = useCartStore();
   const subtotal = total;
   const tax = 0;
-  const deliveryFee = orderType === "delivery" && selectedArea ? selectedArea.fee : 0;
-  
+  const baseDeliveryFee = orderType === "delivery" && selectedArea ? selectedArea.fee : 0;
+
   const globalDiscount = discountActive ? Math.round(subtotal * (discountPercentage / 100)) : 0;
-  
+
+  // Highest qualifying order-value threshold tier (stacks on top of global + promo).
+  const qualifyingThreshold = thresholdOffers
+    .filter((offer) => subtotal >= offer.minOrderValue)
+    .sort((a, b) => b.minOrderValue - a.minOrderValue)[0] || null;
+
+  // Next tier the customer hasn't reached yet (for the incentive hint).
+  const nextThreshold = thresholdOffers
+    .filter((offer) => subtotal < offer.minOrderValue)
+    .sort((a, b) => a.minOrderValue - b.minOrderValue)[0] || null;
+
+  const freeDelivery =
+    qualifyingThreshold?.rewardType === "free_delivery" && orderType === "delivery";
+
+  let thresholdDiscount = 0;
+  if (qualifyingThreshold?.rewardType === "percentage") {
+    thresholdDiscount = Math.round(subtotal * (qualifyingThreshold.rewardValue / 100));
+  } else if (qualifyingThreshold?.rewardType === "fixed") {
+    thresholdDiscount = qualifyingThreshold.rewardValue;
+  }
+
+  const deliveryFee = freeDelivery ? 0 : baseDeliveryFee;
+
   useEffect(() => {
     if (orderType === "delivery" && deliveryArea) {
       setSelectedArea(deliveryArea);
@@ -110,8 +133,16 @@ export default function CheckoutPage() {
     }
   }, [subtotal, appliedPromoCode]);
   
-  const totalDiscount = globalDiscount + promoDiscount;
+  const totalDiscount = globalDiscount + promoDiscount + thresholdDiscount;
   const grandTotal = Math.max(0, subtotal + tax + deliveryFee - totalDiscount);
+
+  const describeReward = (offer) => {
+    if (!offer) return "";
+    if (offer.rewardType === "free_delivery") return "free delivery";
+    if (offer.rewardType === "percentage") return `${offer.rewardValue}% off`;
+    if (offer.rewardType === "fixed") return `Rs. ${offer.rewardValue} off`;
+    return "";
+  };
 
   const easypaisaDetails = {
     title: "EasyPaisa Payment Details",
@@ -219,10 +250,23 @@ export default function CheckoutPage() {
       }
     }
     
+    async function fetchThresholdOffers() {
+      try {
+        const res = await fetch("/api/threshold-offers?active=1");
+        if (res.ok) {
+          const data = await res.json();
+          setThresholdOffers(data);
+        }
+      } catch (error) {
+        console.error("Error fetching threshold offers:", error);
+      }
+    }
+
     fetchDiscountSettings();
     if (orderType === "delivery" && branch) {
       fetchDeliveryAreas();
     }
+    fetchThresholdOffers();
     fetchSiteStatus();
   }, [orderType, branch]);
 
@@ -240,7 +284,12 @@ export default function CheckoutPage() {
     setIsApplyingPromo(true);
     
     try {
-      const res = await fetch(`/api/promocodes/verify?code=${promoCode.trim().toUpperCase()}`);
+      const mobileParam = mobileNumber.trim()
+        ? `&mobile=${encodeURIComponent(mobileNumber.trim())}`
+        : "";
+      const res = await fetch(
+        `/api/promocodes/verify?code=${promoCode.trim().toUpperCase()}${mobileParam}`
+      );
       if (res.ok) {
         const data = await res.json();
         setAppliedPromoCode(data);
@@ -460,7 +509,9 @@ const handlePlaceOrder = async () => {
     const taxValue = Math.round(tax);
     const globalDiscountValue = Math.round(globalDiscount);
     const promoDiscountValue = Math.round(promoDiscount);
+    const thresholdDiscountValue = Math.round(thresholdDiscount);
     const totalDiscountValue = Math.round(totalDiscount);
+    const deliveryFeeValue = Math.round(deliveryFee);
     const grandTotalValue = Math.round(grandTotal);
     
     const formData = new FormData();
@@ -476,7 +527,7 @@ const handlePlaceOrder = async () => {
       formData.append("alternateMobile", alternateMobile);
       formData.append("deliveryAddress", completeAddress);
       formData.append("nearestLandmark", nearestLandmark);
-      formData.append("deliveryFee", selectedArea.fee.toString());
+      formData.append("deliveryFee", deliveryFeeValue.toString());
       formData.append("area", selectedArea.name);
     } else if (orderType === "pickup") {
       formData.append("area", "N/A");
@@ -490,6 +541,7 @@ const handlePlaceOrder = async () => {
     formData.append("tax", taxValue.toString());
     formData.append("globalDiscount", globalDiscountValue.toString());
     formData.append("promoDiscount", promoDiscountValue.toString());
+    formData.append("thresholdDiscount", thresholdDiscountValue.toString());
     formData.append("discount", totalDiscountValue.toString());
     formData.append("total", grandTotalValue.toString());
     
@@ -552,6 +604,7 @@ const handlePlaceOrder = async () => {
       subtotal: subtotalValue,
       globalDiscount: globalDiscountValue,
       promoDiscount: promoDiscountValue,
+      thresholdDiscount: thresholdDiscountValue,
       totalDiscount: totalDiscountValue,
       promoCode: appliedPromoCode ? appliedPromoCode.code : null,
       globalDiscountPercentage: discountActive ? discountPercentage : 0,
@@ -564,7 +617,8 @@ const handlePlaceOrder = async () => {
       orderDetails.deliveryAddress = deliveryAddress + ", " + selectedArea?.name;
       orderDetails.nearestLandmark = nearestLandmark;
       orderDetails.area = selectedArea?.name;
-      orderDetails.deliveryFee = selectedArea?.fee || 0;
+      orderDetails.deliveryFee = deliveryFeeValue;
+      orderDetails.freeDelivery = freeDelivery;
     }
 
     sessionStorage.setItem("lastOrder", JSON.stringify(orderDetails));
@@ -1254,6 +1308,13 @@ const handlePlaceOrder = async () => {
                 )}
               </div>
               
+              {nextThreshold && (
+                <div className="mb-4 text-sm text-green-700 bg-green-50 border border-green-200 p-3 rounded-md text-center">
+                  Add <span className="font-semibold">Rs. {formatPrice(nextThreshold.minOrderValue - subtotal)}</span> more to unlock{" "}
+                  <span className="font-semibold">{describeReward(nextThreshold)}</span>!
+                </div>
+              )}
+
               <div className="space-y-3 text-sm sm:text-base text-gray-600 border-t border-b border-gray-200 py-4 mb-4">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
@@ -1266,14 +1327,32 @@ const handlePlaceOrder = async () => {
                 {orderType === "delivery" && (
                   <div className="flex justify-between">
                     <span>Delivery Fee</span>
-                    <span>Rs. {formatPrice(deliveryFee)}</span>
+                    {freeDelivery ? (
+                      <span>
+                        <span className="line-through text-gray-400 mr-1">Rs. {formatPrice(baseDeliveryFee)}</span>
+                        <span className="text-green-600 font-semibold">FREE</span>
+                      </span>
+                    ) : (
+                      <span>Rs. {formatPrice(deliveryFee)}</span>
+                    )}
                   </div>
                 )}
-                
+
                 {discountActive && globalDiscount > 0 && (
                   <div className="flex justify-between text-yellow-600 font-medium">
                     <span>Global Discount ({discountPercentage}%)</span>
                     <span>- Rs. {formatPrice(globalDiscount)}</span>
+                  </div>
+                )}
+
+                {thresholdDiscount > 0 && (
+                  <div className="flex justify-between text-green-700 font-medium">
+                    <span>
+                      {qualifyingThreshold?.rewardType === "percentage"
+                        ? `Order Reward (${qualifyingThreshold.rewardValue}%)`
+                        : "Order Reward"}
+                    </span>
+                    <span>- Rs. {formatPrice(thresholdDiscount)}</span>
                   </div>
                 )}
                 

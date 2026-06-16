@@ -23,14 +23,20 @@ export async function POST(request) {
   try {
     await connectDB();
     const body = await request.json();
-    const { code, discount } = body;
+    const { code, discount, usageType, maxRedemptions } = body;
     if (!code || discount <= 0) {
       return NextResponse.json(
         { error: "Invalid promo code or discount" },
         { status: 400 }
       );
     }
-    const newPromo = new PromoCode({ code, discount });
+    const newPromo = new PromoCode({
+      code,
+      discount,
+      usageType: usageType === "single" ? "single" : "multiple",
+      maxRedemptions: Math.max(0, Number(maxRedemptions) || 0),
+      isActive: true,
+    });
     const createdPromo = await newPromo.save();
     return NextResponse.json(
       createdPromo.toObject({ getters: true }),
