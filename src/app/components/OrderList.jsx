@@ -615,7 +615,8 @@ const printKitchenSlip = useCallback(async (order) => {
   newWindow.document.write(htmlContent);
   newWindow.document.close();
 
-  updateOrderStatus(String(extractValue(orderToPrint._id)), { status: "In-Process" });
+  // Status auto-update on print temporarily disabled (per request).
+  // updateOrderStatus(String(extractValue(orderToPrint._id)), { status: "In-Process" });
 }, [fetchOrderDetails, updateOrderStatus]);
 
 const printDeliveryPreBill = useCallback(async (order) => {
@@ -726,7 +727,8 @@ const printDeliveryPreBill = useCallback(async (order) => {
   newWindow.document.write(htmlContent);
   newWindow.document.close();
 
-  updateOrderStatus(String(extractValue(orderToPrint._id)), { status: "Dispatched" });
+  // Status auto-update on print temporarily disabled (per request).
+  // updateOrderStatus(String(extractValue(orderToPrint._id)), { status: "Dispatched" });
 }, [fetchOrderDetails, getDeliveryFeeForArea, updateOrderStatus]);
 
 const printDeliveryPaymentReceipt = useCallback(async (order) => {

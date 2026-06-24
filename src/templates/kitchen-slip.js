@@ -57,6 +57,13 @@ export default `<!DOCTYPE html>
       margin-bottom: 5px; /* Added margin for space between title and fields */
     }
 
+    .brand-name {
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
     .header-title {
       font-weight: 900;
       font-size: 15px;
@@ -148,6 +155,7 @@ export default `<!DOCTYPE html>
 <body>
   <div class="slip-container">
     <div class="header">
+      <div class="brand-name">Freshs.pk</div>
       <div class="header-title">DELIVERY SLIP</div>
     </div>
 
@@ -172,6 +180,7 @@ export default `<!DOCTYPE html>
     </table>
 
     <div class="footer">
+      Thank you for shopping with Freshs.pk!
     </div>
   </div>
 

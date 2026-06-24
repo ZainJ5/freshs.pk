@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/app/lib/mongoose";
 import Order from "@/app/models/Order";
 import PromoCode from "@/app/models/PromoCode";
+import { sendOrderConfirmationEmail } from "@/app/lib/mail";
 import path from "path";
 import fs from "fs";
 
@@ -272,7 +273,14 @@ export async function POST(request) {
     //   console.log("Alternate no. found")
     //   await sendWhatsAppMessage(alternateMobile, confirmationMessage);
     // }
-    
+
+    // Email the customer their order confirmation (non-blocking, never fails the order).
+    if (email) {
+      sendOrderConfirmationEmail(populatedOrder).catch((err) =>
+        console.error("Error sending order confirmation email:", err)
+      );
+    }
+
     console.log("Created Order:", populatedOrder);
     return NextResponse.json(populatedOrder, { status: 201 });
   } catch (error) {

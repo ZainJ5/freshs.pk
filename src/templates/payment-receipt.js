@@ -158,13 +158,22 @@ export default `<!DOCTYPE html>
     }
 
     .bill-amount {
-      background-color: #000;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
       padding: 6px;
       margin-top: 5px;
+      border: 2px solid #000;
       border-radius: 3px;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 900;
+    }
+
+    .brand-name {
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-bottom: 4px;
     }
 
     .payment-info {
@@ -220,6 +229,7 @@ export default `<!DOCTYPE html>
 <body>
   <div class="receipt-container">
     <div class="header">
+      <div class="brand-name">Freshs.pk</div>
       <div class="receipt-title">DELIVERY - PAYMENT RECEIPT</div>
     </div>
 
@@ -279,6 +289,9 @@ export default `<!DOCTYPE html>
       <div><span class="bold">Alternative: </span>{{alternateMobile}}</div>
       <div><span class="bold">Complete Address: </span>{{deliveryAddress}}</div>
     </div>
+
+    <div class="footer">Thank you for shopping with Freshs.pk!<br/>We appreciate your order.</div>
+  </div>
   <script>
     window.onload = function() {
       window.print();
