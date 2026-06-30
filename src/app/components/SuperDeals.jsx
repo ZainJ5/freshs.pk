@@ -181,8 +181,8 @@ export default function SuperDeals({ searchQuery }) {
                   <div className="mt-2 sm:mt-4 flex justify-between items-center">
                     <span className="text-lg sm:text-xl md:text-2xl font-bold">
                       {hasVariations
-                        ? `Rs.${lowestPrice}`
-                        : `Rs.${getPrice(item.price)}`}
+                        ? `PKR ${lowestPrice}`
+                        : `PKR ${getPrice(item.price)}`}
                     </span>
                     <button
                       onClick={(e) => {
@@ -255,7 +255,7 @@ export default function SuperDeals({ searchQuery }) {
                   >
                     {selectedItem.variations.map((variation, index) => (
                       <option key={index} value={index}>
-                        {variation.name} - Rs.{getPrice(variation.price)}
+                        {variation.name} - PKR {getPrice(variation.price)}
                       </option>
                     ))}
                   </select>
@@ -263,7 +263,7 @@ export default function SuperDeals({ searchQuery }) {
               ) : (
                 <div className="w-full mb-4 text-center">
                   <p className="text-lg font-bold">
-                    Price: Rs.{getPrice(selectedItem.price)}
+                    Price: PKR {getPrice(selectedItem.price)}
                   </p>
                 </div>
               )}

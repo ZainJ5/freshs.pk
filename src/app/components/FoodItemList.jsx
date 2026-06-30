@@ -1221,9 +1221,9 @@ export default function FoodItemList() {
               {/* Price display with optional previous price */}
               {(!item.variations || item.variations.length === 0) && (
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="font-semibold text-gray-800">{price} Rs</span>
+                  <span className="font-semibold text-gray-800">{price} PKR</span>
                   {previousPrice && (
-                    <span className="text-xs text-gray-500 line-through">{previousPrice} Rs</span>
+                    <span className="text-xs text-gray-500 line-through">{previousPrice} PKR</span>
                   )}
                 </div>
               )}
@@ -1277,7 +1277,7 @@ export default function FoodItemList() {
                               </span>
                               <span className="text-gray-500 flex-shrink-0">•</span>
                               <span className={`flex-shrink-0 ${!isVariationAvailable ? "text-gray-400" : "text-gray-600"}`}>
-                                {extractValue(variation.price)} Rs
+                                {extractValue(variation.price)} PKR
                               </span>
                             </div>
                             <button 

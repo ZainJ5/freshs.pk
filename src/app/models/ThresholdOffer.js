@@ -8,7 +8,7 @@ const ThresholdOfferSchema = new mongoose.Schema(
       enum: ["free_delivery", "fixed", "percentage"],
       required: true,
     },
-    rewardValue: { type: Number, default: 0 }, // % for percentage, Rs for fixed, ignored for free_delivery
+    rewardValue: { type: Number, default: 0 }, // % for percentage, PKR for fixed, ignored for free_delivery
     label: { type: String, default: "" },
     isActive: { type: Boolean, default: true },
   },

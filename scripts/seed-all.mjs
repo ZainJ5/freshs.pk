@@ -106,7 +106,7 @@ async function main() {
   // 4. Navbar info ────────────────────────────────────────────────────────────
   await NavbarInfo.updateOne({}, { $setOnInsert: {
     restaurant: { name: 'Freshs.pk', openingHours: '09:00 AM – 12:00 AM' },
-    delivery: { time: '30-45 mins', minimumOrder: 'Rs. 500 Only' },
+    delivery: { time: '30-45 mins', minimumOrder: 'PKR 500 Only' },
     socialLinks: [
       { platform: 'whatsapp', icon: '/icons/whatsapp.svg', url: 'https://wa.me/923362069023' },
       { platform: 'facebook', icon: '/icons/facebook.svg', url: 'https://www.facebook.com/profile.php?id=100083161330618' },
@@ -130,7 +130,7 @@ async function main() {
   const areaCount = await DeliveryArea.countDocuments({});
   if (areaCount === 0) {
     await DeliveryArea.create({ name: 'Nazimabad', fee: 100, branch: branch._id, isActive: true });
-    console.log('Created sample delivery area "Nazimabad" (fee Rs.100 – adjust in admin)');
+    console.log('Created sample delivery area "Nazimabad" (fee PKR 100 – adjust in admin)');
   } else {
     console.log(`Delivery areas already present (${areaCount}) – left untouched`);
   }

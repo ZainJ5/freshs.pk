@@ -15,7 +15,7 @@ const NavbarInfoSchema = new mongoose.Schema({
   },
   delivery: {
     time: { type: String, required: true, default: "30-45 mins" },
-    minimumOrder: { type: String, required: true, default: "Rs. 500 Only" }
+    minimumOrder: { type: String, required: true, default: "PKR 500 Only" }
   },
   socialLinks: [SocialLinkSchema],
   updatedAt: { type: Date, default: Date.now }

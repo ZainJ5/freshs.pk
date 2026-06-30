@@ -36,7 +36,7 @@ export default function CartButton() {
             </div>
             <div className="h-8 w-px bg-white/40"></div>
             <div className="flex items-center gap-2">
-              <span className="text-lg font-semibold">Rs.</span>
+              <span className="text-lg font-semibold">PKR</span>
               <span className="text-2xl font-bold">{total}</span>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function CartButton() {
           <span>{items.length}</span>
           <div className="mx-3 h-4 w-px bg-white"></div>
           <FaCreditCard className="mr-2 text-sm" />
-          <span>Rs. {total}</span>
+          <span>PKR {total}</span>
         </button>
       </div>
 

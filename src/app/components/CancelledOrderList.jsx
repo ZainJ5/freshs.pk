@@ -301,7 +301,7 @@ export default function OrderHistory() {
                     </td> */}
                     {/* <td className="p-3 border-b">{area}</td> */}
                     <td className="p-3 border-b font-medium">
-                      Rs. {extractValue(order.total) || order.total}
+                      PKR {extractValue(order.total) || order.total}
                     </td>
                     <td className="p-3 border-b">
                       <span

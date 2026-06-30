@@ -418,13 +418,13 @@ export default function Statistics() {
       </div>
       
       <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2 gap-4">
-        <SummaryCard title="Subtotal" value={`Rs. ${numberFmt(stats.subtotal)}`} color="text-amber-600" />
-        <SummaryCard title="Tax" value={`Rs. ${numberFmt(stats.tax)}`} color="text-purple-600" />
-        <SummaryCard title="Discounts" value={`Rs. ${numberFmt(stats.discount)}`} color="text-blue-600" />
-        <SummaryCard title="Total Revenue" value={`Rs. ${numberFmt(stats.total)}`} color="text-green-600" />
-        <SummaryCard title="Delivery Fees" value={`Rs. ${numberFmt(stats.deliveryFees)}`} color="text-indigo-600" />
-        <SummaryCard title="Avg Order Value" value={`Rs. ${numberFmt(Math.round(stats.avgOrderValue))}`} color="text-pink-600" />
-        <SummaryCard title="Avg Delivery Fee" value={`Rs. ${numberFmt(Math.round(stats.avgDeliveryFee))}`} color="text-orange-600" />
+        <SummaryCard title="Subtotal" value={`PKR ${numberFmt(stats.subtotal)}`} color="text-amber-600" />
+        <SummaryCard title="Tax" value={`PKR ${numberFmt(stats.tax)}`} color="text-purple-600" />
+        <SummaryCard title="Discounts" value={`PKR ${numberFmt(stats.discount)}`} color="text-blue-600" />
+        <SummaryCard title="Total Revenue" value={`PKR ${numberFmt(stats.total)}`} color="text-green-600" />
+        <SummaryCard title="Delivery Fees" value={`PKR ${numberFmt(stats.deliveryFees)}`} color="text-indigo-600" />
+        <SummaryCard title="Avg Order Value" value={`PKR ${numberFmt(Math.round(stats.avgOrderValue))}`} color="text-pink-600" />
+        <SummaryCard title="Avg Delivery Fee" value={`PKR ${numberFmt(Math.round(stats.avgDeliveryFee))}`} color="text-orange-600" />
       </div>
 
       <Section title="Order Status Distribution">
@@ -446,7 +446,7 @@ export default function Statistics() {
                   {idx + 1}. {item.title}
                 </span>
                 <span className="text-gray-600">
-                  {item.totalQuantity} qty (Rs. {numberFmt(item.totalRevenue)})
+                  {item.totalQuantity} qty (PKR {numberFmt(item.totalRevenue)})
                 </span>
               </li>
             ))}
@@ -475,10 +475,10 @@ export default function Statistics() {
                   <tr key={i} className="border-b last:border-0">
                     <td className="py-2 pr-4">{a.name || "Unknown"}</td>
                     <td className="py-2 pr-4">{a.orderCount}</td>
-                    <td className="py-2 pr-4">Rs. {numberFmt(a.totalRevenue)}</td>
-                    <td className="py-2 pr-4">Rs. {numberFmt(a.totalDeliveryFees)}</td>
-                    <td className="py-2 pr-4">Rs. {numberFmt(Math.round(a.avgOrderValue))}</td>
-                    <td className="py-2 pr-4">Rs. {numberFmt(Math.round(a.avgDeliveryFee))}</td>
+                    <td className="py-2 pr-4">PKR {numberFmt(a.totalRevenue)}</td>
+                    <td className="py-2 pr-4">PKR {numberFmt(a.totalDeliveryFees)}</td>
+                    <td className="py-2 pr-4">PKR {numberFmt(Math.round(a.avgOrderValue))}</td>
+                    <td className="py-2 pr-4">PKR {numberFmt(Math.round(a.avgDeliveryFee))}</td>
                   </tr>
                 ))}
               </tbody>
@@ -509,10 +509,10 @@ export default function Statistics() {
                   <tr key={i} className="border-b last:border-0">
                     <td className="py-2 pr-4 font-medium">{p.promoCode}</td>
                     <td className="py-2 pr-4">{p.uses}</td>
-                    <td className="py-2 pr-4">Rs. {numberFmt(p.totalDiscount)}</td>
-                    <td className="py-2 pr-4">Rs. {numberFmt(p.netRevenue)}</td>
-                    <td className="py-2 pr-4">Rs. {numberFmt(Math.round(p.avgDiscountPerUse))}</td>
-                    <td className="py-2 pr-4">Rs. {numberFmt(Math.round(p.avgNetPerUse))}</td>
+                    <td className="py-2 pr-4">PKR {numberFmt(p.totalDiscount)}</td>
+                    <td className="py-2 pr-4">PKR {numberFmt(p.netRevenue)}</td>
+                    <td className="py-2 pr-4">PKR {numberFmt(Math.round(p.avgDiscountPerUse))}</td>
+                    <td className="py-2 pr-4">PKR {numberFmt(Math.round(p.avgNetPerUse))}</td>
                   </tr>
                 ))}
               </tbody>

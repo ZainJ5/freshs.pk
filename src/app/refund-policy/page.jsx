@@ -57,7 +57,7 @@ export default function ReturnsRefundsPolicyPage() {
           <section className="p-6 rounded-lg shadow-sm">
             <h2 className="text-2xl font-semibold mb-4">What is a Refund Voucher?</h2>
             <p className="text-gray-700 leading-relaxed">
-              A Refund Voucher is a return mechanism equal in value to the amount paid for the returned item. You can use the Refund Voucher at checkout to discount the voucher amount from your next purchase. This voucher can be used on multiple purchases (if the purchase value is less than the voucher amount) until your refund voucher balance reaches Rs. 0. A Refund Voucher is valid for 180 days, after which it will expire and cannot be used.
+              A Refund Voucher is a return mechanism equal in value to the amount paid for the returned item. You can use the Refund Voucher at checkout to discount the voucher amount from your next purchase. This voucher can be used on multiple purchases (if the purchase value is less than the voucher amount) until your refund voucher balance reaches PKR 0. A Refund Voucher is valid for 180 days, after which it will expire and cannot be used.
             </p>
           </section>
 
@@ -73,7 +73,7 @@ export default function ReturnsRefundsPolicyPage() {
               I Have Bought an Item on Promotion or with a Discount Code. What Amount Will You Refund Me?
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              For items purchased on sale, if a refund is allowed, the amount refunded will be the exact amount you paid, not the item's original value. For example, if you purchased an item on sale for Rs. 500 (with an original value of Rs. 1000), we will refund you Rs. 500 only. If you purchased an item using a Refund Voucher, we will refund you the sum of the amount paid (including the amount of the Refund Voucher used).
+              For items purchased on sale, if a refund is allowed, the amount refunded will be the exact amount you paid, not the item's original value. For example, if you purchased an item on sale for PKR 500 (with an original value of PKR 1000), we will refund you PKR 500 only. If you purchased an item using a Refund Voucher, we will refund you the sum of the amount paid (including the amount of the Refund Voucher used).
             </p>
           </section>
         </div>

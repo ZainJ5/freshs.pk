@@ -294,7 +294,7 @@ export default function DiscountManagement() {
   const describeReward = (offer) => {
     if (offer.rewardType === "free_delivery") return "Free delivery";
     if (offer.rewardType === "percentage") return `${offer.rewardValue}% off`;
-    if (offer.rewardType === "fixed") return `Rs. ${offer.rewardValue} off`;
+    if (offer.rewardType === "fixed") return `PKR ${offer.rewardValue} off`;
     return "-";
   };
 
@@ -569,7 +569,7 @@ export default function DiscountManagement() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Minimum Order Value (Rs.)
+                    Minimum Order Value (PKR )
                   </label>
                   <input
                     type="number"
@@ -602,7 +602,7 @@ export default function DiscountManagement() {
               {newRewardType !== "free_delivery" && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {newRewardType === "percentage" ? "Discount Percentage" : "Discount Amount (Rs.)"}
+                    {newRewardType === "percentage" ? "Discount Percentage" : "Discount Amount (PKR )"}
                   </label>
                   <div className="flex items-center">
                     <input
@@ -616,7 +616,7 @@ export default function DiscountManagement() {
                       required
                     />
                     <span className="ml-2 text-gray-700">
-                      {newRewardType === "percentage" ? "%" : "Rs."}
+                      {newRewardType === "percentage" ? "%" : "PKR"}
                     </span>
                   </div>
                 </div>
@@ -631,7 +631,7 @@ export default function DiscountManagement() {
                   value={newThresholdLabel}
                   onChange={(e) => setNewThresholdLabel(e.target.value)}
                   className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500"
-                  placeholder="e.g. Free delivery on orders above Rs. 2000"
+                  placeholder="e.g. Free delivery on orders above PKR 2000"
                 />
               </div>
 
@@ -667,7 +667,7 @@ export default function DiscountManagement() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {thresholdOffers.map((offer) => (
                       <tr key={offer._id}>
-                        <td className="px-4 py-4 whitespace-nowrap font-medium">Rs. {offer.minOrderValue}</td>
+                        <td className="px-4 py-4 whitespace-nowrap font-medium">PKR {offer.minOrderValue}</td>
                         <td className="px-4 py-4 whitespace-nowrap">{describeReward(offer)}</td>
                         <td className="px-4 py-4 text-sm text-gray-600">{offer.label || "-"}</td>
                         <td className="px-4 py-4 whitespace-nowrap">
@@ -721,7 +721,7 @@ export default function DiscountManagement() {
           </p>
           <p>
             <span className="font-medium">Order Thresholds:</span> Automatic rewards for larger orders (e.g. free delivery
-            above Rs. 2000 or 10% off above Rs. 3000), encouraging customers to spend more.
+            above PKR 2000 or 10% off above PKR 3000), encouraging customers to spend more.
           </p>
         </div>
       </div>

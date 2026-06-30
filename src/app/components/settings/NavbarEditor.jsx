@@ -12,7 +12,7 @@ export default function NavbarEditor() {
     },
     delivery: {
       time: "30-45 mins",
-      minimumOrder: "Rs. 500 Only"
+      minimumOrder: "PKR 500 Only"
     },
     socialLinks: [
       { platform: "whatsapp", icon: "/icons/whatsapp.svg", url: "https://wa.me/923362069023" },

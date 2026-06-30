@@ -463,7 +463,7 @@ function OrderDetailContent() {
                 {orderDetails.changeRequest && (
                   <div>
                     <p className="text-xs text-gray-500">Change Request</p>
-                    <p className="font-medium text-gray-900">Rs. {orderDetails.changeRequest}</p>
+                    <p className="font-medium text-gray-900">PKR {orderDetails.changeRequest}</p>
                   </div>
                 )}
                 {orderDetails.paymentInstructions && (
@@ -547,10 +547,10 @@ function OrderDetailContent() {
                           {quantity}
                         </td>
                         <td className="px-4 py-4 text-right text-sm text-gray-500">
-                          Rs. {price}
+                          PKR {price}
                         </td>
                         <td className="px-4 py-4 text-right text-sm font-medium text-gray-900">
-                          Rs. {itemTotal}
+                          PKR {itemTotal}
                         </td>
                       </tr>
                     );
@@ -567,27 +567,27 @@ function OrderDetailContent() {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between text-gray-500">
                     <span>Subtotal:</span>
-                    <span className="text-gray-900">Rs. {subtotal}</span>
+                    <span className="text-gray-900">PKR {subtotal}</span>
                   </div>
                   
                   {tax > 0 && (
                     <div className="flex justify-between text-gray-500">
                       <span>Tax:</span>
-                      <span className="text-gray-900">Rs. {tax}</span>
+                      <span className="text-gray-900">PKR {tax}</span>
                     </div>
                   )}
                   
                   {orderDetails.orderType === "delivery" && (
                     <div className="flex justify-between text-gray-500">
                       <span>Delivery Fee:</span>
-                      <span className="text-gray-900">{deliveryFee === 0 ? "FREE" : `Rs. ${deliveryFee}`}</span>
+                      <span className="text-gray-900">{deliveryFee === 0 ? "FREE" : `PKR ${deliveryFee}`}</span>
                     </div>
                   )}
                   
                   {displayDiscount > 0 && (
                     <div className="flex justify-between text-green-600">
                       <span>Discount:</span>
-                      <span>- Rs. {displayDiscount}</span>
+                      <span>- PKR {displayDiscount}</span>
                     </div>
                   )}
                   
@@ -601,7 +601,7 @@ function OrderDetailContent() {
                   <div className="pt-3 mt-1 border-t border-gray-200">
                     <div className="flex justify-between">
                       <span className="text-base font-medium text-gray-900">Total:</span>
-                      <span className="text-base font-bold text-gray-900">Rs. {total}</span>
+                      <span className="text-base font-bold text-gray-900">PKR {total}</span>
                     </div>
                   </div>
                 </div>

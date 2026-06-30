@@ -285,7 +285,7 @@ export default function DeliveryAreasManager() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Delivery Fee (Rs.)</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Delivery Fee (PKR )</label>
             <input
               type="number"
               value={fee}
@@ -349,7 +349,7 @@ export default function DeliveryAreasManager() {
                       {area.branch?.name || <span className="text-red-500 text-xs">No Branch</span>}
                     </td>
                     <td className="px-4 py-3">{area.name}</td>
-                    <td className="px-4 py-3">Rs. {area.fee}</td>
+                    <td className="px-4 py-3">PKR {area.fee}</td>
                     <td className="px-4 py-3">
                       <span
                         className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
@@ -428,7 +428,7 @@ export default function DeliveryAreasManager() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Delivery Fee (Rs.)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Delivery Fee (PKR )</label>
                   <input
                     type="number"
                     value={editFee}

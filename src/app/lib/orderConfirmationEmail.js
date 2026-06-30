@@ -28,7 +28,7 @@ const esc = (value) =>
 
 const money = (value) => {
   const num = Number(value) || 0;
-  return `Rs. ${num.toLocaleString("en-PK")}`;
+  return `PKR ${num.toLocaleString("en-PK")}`;
 };
 
 const getNumber = (value, fallback = 0) => {

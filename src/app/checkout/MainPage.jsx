@@ -140,7 +140,7 @@ export default function CheckoutPage() {
     if (!offer) return "";
     if (offer.rewardType === "free_delivery") return "free delivery";
     if (offer.rewardType === "percentage") return `${offer.rewardValue}% off`;
-    if (offer.rewardType === "fixed") return `Rs. ${offer.rewardValue} off`;
+    if (offer.rewardType === "fixed") return `PKR ${offer.rewardValue} off`;
     return "";
   };
 
@@ -404,7 +404,7 @@ export default function CheckoutPage() {
     }
     
     if (subtotal < MIN_ORDER_VALUE) {
-      toast.error(`Minimum order value is Rs. ${MIN_ORDER_VALUE}. Please add more items to your order.`, {
+      toast.error(`Minimum order value is PKR ${MIN_ORDER_VALUE}. Please add more items to your order.`, {
         style: { background: "#dc2626", color: "#ffffff" },
       });
       return false;
@@ -881,7 +881,7 @@ const handlePlaceOrder = async () => {
                         <option value="">Select an area</option>
                         {deliveryAreas.map((area) => (
                           <option key={area._id} value={area.name}>
-                            {area.name} (Fee: Rs. {area.fee})
+                            {area.name} (Fee: PKR {area.fee})
                           </option>
                         ))}
                       </select>
@@ -1165,7 +1165,7 @@ const handlePlaceOrder = async () => {
                     </label>
                     <div className="flex">
                       <span className="inline-flex items-center px-3 py-2 border border-r-0 border-gray-200 rounded-l-md bg-gray-50">
-                        Rs.
+                        PKR 
                       </span>
                       <input
                         type="text"
@@ -1185,7 +1185,7 @@ const handlePlaceOrder = async () => {
                 <div className="flex items-center space-x-4">
                   <h2 className="text-lg sm:text-xl font-semibold">Your Order</h2>
                 </div>
-                <span className="text-lg sm:text-xl font-semibold">Rs. {formatPrice(subtotal)}</span>
+                <span className="text-lg sm:text-xl font-semibold">PKR {formatPrice(subtotal)}</span>
               </div>
               {items.length > 0 ? (
                 <div className="mb-4 space-y-3 max-h-60 overflow-y-auto custom-scrollbar">
@@ -1232,7 +1232,7 @@ const handlePlaceOrder = async () => {
                             </p>
                           )}
                         </div>
-                        <span className="text-right ml-4">Rs. {formatPrice(totalItemPrice)}</span>
+                        <span className="text-right ml-4">PKR {formatPrice(totalItemPrice)}</span>
                       </div>
                     );
                   })}
@@ -1268,7 +1268,7 @@ const handlePlaceOrder = async () => {
                     <p className="text-sm text-green-600 mt-2 flex items-center">
                       <FaPercent className="mr-1" size={12} />
                       <span>
-                        Additional {appliedPromoCode.discount}% off: Rs. {formatPrice(promoDiscount)}
+                        Additional {appliedPromoCode.discount}% off: PKR {formatPrice(promoDiscount)}
                       </span>
                     </p>
                   </div>
@@ -1310,7 +1310,7 @@ const handlePlaceOrder = async () => {
               
               {nextThreshold && (
                 <div className="mb-4 text-sm text-green-700 bg-green-50 border border-green-200 p-3 rounded-md text-center">
-                  Add <span className="font-semibold">Rs. {formatPrice(nextThreshold.minOrderValue - subtotal)}</span> more to unlock{" "}
+                  Add <span className="font-semibold">PKR {formatPrice(nextThreshold.minOrderValue - subtotal)}</span> more to unlock{" "}
                   <span className="font-semibold">{describeReward(nextThreshold)}</span>!
                 </div>
               )}
@@ -1318,22 +1318,22 @@ const handlePlaceOrder = async () => {
               <div className="space-y-3 text-sm sm:text-base text-gray-600 border-t border-b border-gray-200 py-4 mb-4">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span>Rs. {formatPrice(subtotal)}</span>
+                  <span>PKR {formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Tax (0%)</span>
-                  <span>Rs. {formatPrice(tax)}</span>
+                  <span>PKR {formatPrice(tax)}</span>
                 </div>
                 {orderType === "delivery" && (
                   <div className="flex justify-between">
                     <span>Delivery Fee</span>
                     {freeDelivery ? (
                       <span>
-                        <span className="line-through text-gray-400 mr-1">Rs. {formatPrice(baseDeliveryFee)}</span>
+                        <span className="line-through text-gray-400 mr-1">PKR {formatPrice(baseDeliveryFee)}</span>
                         <span className="text-green-600 font-semibold">FREE</span>
                       </span>
                     ) : (
-                      <span>Rs. {formatPrice(deliveryFee)}</span>
+                      <span>PKR {formatPrice(deliveryFee)}</span>
                     )}
                   </div>
                 )}
@@ -1341,7 +1341,7 @@ const handlePlaceOrder = async () => {
                 {discountActive && globalDiscount > 0 && (
                   <div className="flex justify-between text-yellow-600 font-medium">
                     <span>Global Discount ({discountPercentage}%)</span>
-                    <span>- Rs. {formatPrice(globalDiscount)}</span>
+                    <span>- PKR {formatPrice(globalDiscount)}</span>
                   </div>
                 )}
 
@@ -1352,21 +1352,21 @@ const handlePlaceOrder = async () => {
                         ? `Order Reward (${qualifyingThreshold.rewardValue}%)`
                         : "Order Reward"}
                     </span>
-                    <span>- Rs. {formatPrice(thresholdDiscount)}</span>
+                    <span>- PKR {formatPrice(thresholdDiscount)}</span>
                   </div>
                 )}
                 
                 {appliedPromoCode && promoDiscount > 0 && (
                   <div className="flex justify-between text-green-600 font-medium">
                     <span>Promo Discount ({appliedPromoCode.discount}%)</span>
-                    <span>- Rs. {formatPrice(promoDiscount)}</span>
+                    <span>- PKR {formatPrice(promoDiscount)}</span>
                   </div>
                 )}
 
                 {totalDiscount > 0 && (
                   <div className="flex justify-between text-brand-600 font-bold">
                     <span>Total Discount</span>
-                    <span>- Rs. {formatPrice(totalDiscount)}</span>
+                    <span>- PKR {formatPrice(totalDiscount)}</span>
                   </div>
                 )}
               </div>
@@ -1374,11 +1374,11 @@ const handlePlaceOrder = async () => {
               <div className="mt-4">
                 <div className="flex justify-between text-base sm:text-lg font-semibold">
                   <span>Grand Total</span>
-                  <span className="text-brand-600">Rs. {formatPrice(grandTotal)}</span>
+                  <span className="text-brand-600">PKR {formatPrice(grandTotal)}</span>
                 </div>
                 {totalDiscount > 0 && (
                   <div className="mt-2 text-xs text-green-600 bg-green-50 p-2 rounded-md text-center">
-                    <span className="font-medium">You saved Rs. {formatPrice(totalDiscount)} on this order!</span>
+                    <span className="font-medium">You saved PKR {formatPrice(totalDiscount)} on this order!</span>
                     {discountActive && appliedPromoCode && (
                       <p className="mt-1">Combined discounts: Global ({discountPercentage}%) + Promo ({appliedPromoCode.discount}%)</p>
                     )}
@@ -1386,7 +1386,7 @@ const handlePlaceOrder = async () => {
                 )}
                 {subtotal < MIN_ORDER_VALUE && (
                   <div className="mt-2 text-xs text-brand-600">
-                    Minimum order value is Rs. {MIN_ORDER_VALUE}. Please add more items.
+                    Minimum order value is PKR {MIN_ORDER_VALUE}. Please add more items.
                   </div>
                 )}
               </div>

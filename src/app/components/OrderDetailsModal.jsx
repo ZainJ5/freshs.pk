@@ -225,7 +225,7 @@ export default function OrderDetailsModal({
                               </span>
                               <CopyButton text={area} fieldName="area" />
                               <span className="text-sm text-gray-700 font-semibold">
-                                (Delivery Fee: Rs. {deliveryFee})
+                                (Delivery Fee: PKR {deliveryFee})
                               </span>
                             </div>
                           </div>
@@ -322,14 +322,14 @@ export default function OrderDetailsModal({
                                         <div className="text-xs text-gray-700 font-semibold">
                                           Variation: {item.selectedVariation.name} 
                                           ({item.selectedVariation.price !== unitPrice ? 
-                                            `+Rs. ${formatPrice(item.selectedVariation.price)}` : 'included'}
+                                            `+PKR ${formatPrice(item.selectedVariation.price)}` : 'included'}
                                           )
                                         </div>
                                       )}
                                     </td>
                                     <td className="px-3 py-1 text-sm text-gray-900 font-bold text-center">{quantity}</td>
-                                    <td className="px-3 py-1 text-sm text-gray-900 font-bold text-right">Rs. {formatPrice(unitPrice)}</td>
-                                    <td className="px-3 py-1 text-sm font-bold text-gray-900 text-right">Rs. {formatPrice(itemTotal)}</td>
+                                    <td className="px-3 py-1 text-sm text-gray-900 font-bold text-right">PKR {formatPrice(unitPrice)}</td>
+                                    <td className="px-3 py-1 text-sm font-bold text-gray-900 text-right">PKR {formatPrice(itemTotal)}</td>
                                   </tr>
                                   
                                   {hasModifications(item) && (
@@ -343,7 +343,7 @@ export default function OrderDetailsModal({
                                                 {item.selectedExtras.map((extra, idx) => (
                                                   <div key={`extra-${idx}`} className="flex justify-between">
                                                     <span className="font-semibold text-gray-800">{extra.name}</span>
-                                                    <span className="text-gray-700 font-semibold">+Rs. {formatPrice(extra.price)}</span>
+                                                    <span className="text-gray-700 font-semibold">+PKR {formatPrice(extra.price)}</span>
                                                   </div>
                                                 ))}
                                               </div>
@@ -357,7 +357,7 @@ export default function OrderDetailsModal({
                                                 {item.selectedSideOrders.map((sideOrder, idx) => (
                                                   <div key={`side-${idx}`} className="flex justify-between">
                                                     <span className="font-semibold text-gray-800">{sideOrder.name}</span>
-                                                    <span className="text-gray-700 font-semibold">+Rs. {formatPrice(sideOrder.price)}</span>
+                                                    <span className="text-gray-700 font-semibold">+PKR {formatPrice(sideOrder.price)}</span>
                                                   </div>
                                                 ))}
                                               </div>
@@ -372,7 +372,7 @@ export default function OrderDetailsModal({
                                                   {mod.items.map((modItem, idx) => (
                                                     <div key={`mod-${index}-${idx}`} className="flex justify-between">
                                                       <span className="font-semibold text-gray-800">{modItem.name}</span>
-                                                      <span className="text-gray-700 font-semibold">+Rs. {formatPrice(modItem.price)}</span>
+                                                      <span className="text-gray-700 font-semibold">+PKR {formatPrice(modItem.price)}</span>
                                                     </div>
                                                   ))}
                                                 </div>
@@ -387,7 +387,7 @@ export default function OrderDetailsModal({
                                                 {item.extras.map((extra, idx) => (
                                                   <div key={`legacy-extra-${idx}`} className="flex justify-between">
                                                     <span className="font-semibold text-gray-800">{extra.name}</span>
-                                                    <span className="text-gray-700 font-semibold">+Rs. {formatPrice(extra.price)}</span>
+                                                    <span className="text-gray-700 font-semibold">+PKR {formatPrice(extra.price)}</span>
                                                   </div>
                                                 ))}
                                               </div>
@@ -401,7 +401,7 @@ export default function OrderDetailsModal({
                                                 {item.sideOrders.map((sideOrder, idx) => (
                                                   <div key={`legacy-side-${idx}`} className="flex justify-between">
                                                     <span className="font-semibold text-gray-800">{sideOrder.name}</span>
-                                                    <span className="text-gray-700 font-semibold">+Rs. {formatPrice(sideOrder.price)}</span>
+                                                    <span className="text-gray-700 font-semibold">+PKR {formatPrice(sideOrder.price)}</span>
                                                   </div>
                                                 ))}
                                               </div>
@@ -438,17 +438,17 @@ export default function OrderDetailsModal({
                   <div className="space-y-0.5 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-700 font-semibold">Subtotal:</span>
-                      <span className="font-bold text-gray-900">Rs. {formatPrice(extractValue(selectedOrder.subtotal))}</span>
+                      <span className="font-bold text-gray-900">PKR {formatPrice(extractValue(selectedOrder.subtotal))}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-700 font-semibold">Tax:</span>
-                      <span className="font-bold text-gray-900">Rs. {formatPrice(extractValue(selectedOrder.tax))}</span>
+                      <span className="font-bold text-gray-900">PKR {formatPrice(extractValue(selectedOrder.tax))}</span>
                     </div>
                     {selectedOrder.orderType === "delivery" && (
                       <div className="flex justify-between">
                         <span className="text-gray-700 font-semibold">Delivery Fee ({area}):</span>
                         <span className="font-bold text-gray-900">
-                          {deliveryFee === 0 ? "FREE" : `Rs. ${formatPrice(deliveryFee)}`}
+                          {deliveryFee === 0 ? "FREE" : `PKR ${formatPrice(deliveryFee)}`}
                         </span>
                       </div>
                     )}
@@ -456,34 +456,34 @@ export default function OrderDetailsModal({
                     {selectedOrder.globalDiscount > 0 && (
                       <div className="flex justify-between text-amber-600">
                         <span className="font-semibold">Global Discount ({selectedOrder.globalDiscountPercentage || 0}%):</span>
-                        <span className="font-bold">- Rs. {formatPrice(selectedOrder.globalDiscount)}</span>
+                        <span className="font-bold">- PKR {formatPrice(selectedOrder.globalDiscount)}</span>
                       </div>
                     )}
                     
                     {selectedOrder.promoDiscount > 0 && (
                       <div className="flex justify-between text-green-600">
                         <span className="font-semibold">Promo Discount ({selectedOrder.promoCode || ''} - {selectedOrder.promoDiscountPercentage || 0}%):</span>
-                        <span className="font-bold">- Rs. {formatPrice(selectedOrder.promoDiscount)}</span>
+                        <span className="font-bold">- PKR {formatPrice(selectedOrder.promoDiscount)}</span>
                       </div>
                     )}
                     
                     {selectedOrder.thresholdDiscount > 0 && (
                       <div className="flex justify-between text-green-700">
                         <span className="font-semibold">Order Reward:</span>
-                        <span className="font-bold">- Rs. {formatPrice(selectedOrder.thresholdDiscount)}</span>
+                        <span className="font-bold">- PKR {formatPrice(selectedOrder.thresholdDiscount)}</span>
                       </div>
                     )}
 
                     {(!selectedOrder.globalDiscount && !selectedOrder.promoDiscount && !selectedOrder.thresholdDiscount && selectedOrder.discount > 0) && (
                       <div className="flex justify-between">
                         <span className="text-gray-700 font-semibold">Discount:</span>
-                        <span className="font-bold text-yellow-600">- Rs. {formatPrice(extractValue(selectedOrder.discount))}</span>
+                        <span className="font-bold text-yellow-600">- PKR {formatPrice(extractValue(selectedOrder.discount))}</span>
                       </div>
                     )}
                     
                     <div className="flex justify-between pt-1 border-t border-gray-200 mt-1">
                       <span className="font-bold text-gray-900">Total:</span>
-                      <span className="font-bold text-red-600 text-base">Rs. {formatPrice(extractValue(selectedOrder.total))}</span>
+                      <span className="font-bold text-red-600 text-base">PKR {formatPrice(extractValue(selectedOrder.total))}</span>
                     </div>
                   </div>
                 </div>
@@ -501,8 +501,8 @@ export default function OrderDetailsModal({
                   {selectedOrder.changeRequest && (
                     <div className="flex items-center gap-2">
                       <p className="text-sm text-gray-700 font-bold whitespace-nowrap">Change Request:</p>
-                      <p className="text-sm font-bold text-gray-900">Rs. {selectedOrder.changeRequest}</p>
-                      <CopyButton text={`Rs. ${selectedOrder.changeRequest}`} fieldName="changeRequest" />
+                      <p className="text-sm font-bold text-gray-900">PKR {selectedOrder.changeRequest}</p>
+                      <CopyButton text={`PKR ${selectedOrder.changeRequest}`} fieldName="changeRequest" />
                     </div>
                   )}
                   {selectedOrder.isGift && selectedOrder.giftMessage && (

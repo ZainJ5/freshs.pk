@@ -580,15 +580,15 @@ function MenuItemCard({ item, getCacheBustedUrl }) {
                 {lowestPriceVariation && lowestPriceVariation.hasDiscount ? (
                   <>
                     <span className="text-xs text-gray-500 line-through">
-                      Rs.{lowestPriceVariation.previousPrice}
+                      PKR {lowestPriceVariation.previousPrice}
                     </span>
                     <span className="text-lg sm:text-xl font-bold text-brand-600">
-                      Rs.{lowestPriceVariation.price}
+                      PKR {lowestPriceVariation.price}
                     </span>
                   </>
                 ) : (
                   <span className="text-lg sm:text-xl font-bold">
-                    From Rs.{lowestPriceVariation ? lowestPriceVariation.price : ''}
+                    From PKR {lowestPriceVariation ? lowestPriceVariation.price : ''}
                   </span>
                 )}
               </div>
@@ -597,15 +597,15 @@ function MenuItemCard({ item, getCacheBustedUrl }) {
                 {item.previousPrice && Number(getPrice(item.previousPrice)) > Number(getPrice(item.price)) ? (
                   <>
                     <span className="text-xs text-gray-500 line-through">
-                      Rs.{getPrice(item.previousPrice)}
+                      PKR {getPrice(item.previousPrice)}
                     </span>
                     <span className="text-lg sm:text-xl font-bold text-brand-600">
-                      Rs.{getPrice(item.price)}
+                      PKR {getPrice(item.price)}
                     </span>
                   </>
                 ) : (
                   <span className="text-lg sm:text-xl font-bold">
-                    Rs.{getPrice(item.price)}
+                    PKR {getPrice(item.price)}
                   </span>
                 )}
               </div>
@@ -681,11 +681,11 @@ function MenuItemCard({ item, getCacheBustedUrl }) {
                   <div className="mt-1 flex items-center">
                     {item.previousPrice && Number(getPrice(item.previousPrice)) > Number(getPrice(item.price)) ? (
                       <>
-                        <span className="text-white/70 line-through mr-2">Rs.{getPrice(item.previousPrice)}</span>
-                        <span className="text-lg font-bold">Rs.{getPrice(item.price)}</span>
+                        <span className="text-white/70 line-through mr-2">PKR {getPrice(item.previousPrice)}</span>
+                        <span className="text-lg font-bold">PKR {getPrice(item.price)}</span>
                       </>
                     ) : (
-                      <span className="text-lg font-bold">Rs.{getPrice(item.price)}</span>
+                      <span className="text-lg font-bold">PKR {getPrice(item.price)}</span>
                     )}
                   </div>
                 )}
@@ -744,14 +744,14 @@ function MenuItemCard({ item, getCacheBustedUrl }) {
                           <div className="text-right">
                             {hasDiscount ? (
                               <div>
-                                <span className="text-xs text-gray-400 line-through block">Rs.{previousPrice}</span>
+                                <span className="text-xs text-gray-400 line-through block">PKR {previousPrice}</span>
                                 <span className={`text-sm font-semibold ${!isVariationAvailable ? 'text-gray-400' : 'text-brand-600'}`}>
-                                  Rs.{price}
+                                  PKR {price}
                                 </span>
                               </div>
                             ) : (
                               <span className={`text-sm font-semibold ${!isVariationAvailable ? 'text-gray-400' : ''}`}>
-                                Rs.{price}
+                                PKR {price}
                               </span>
                             )}
                           </div>
@@ -802,7 +802,7 @@ function MenuItemCard({ item, getCacheBustedUrl }) {
                                   }`}
                                 >
                                   <div className="text-xs font-medium">{extra.size}</div>
-                                  <div className="text-xs mt-0.5">Rs.{getPrice(extra.price)}</div>
+                                  <div className="text-xs mt-0.5">PKR {getPrice(extra.price)}</div>
                                 </div>
                               ))
                             }
@@ -832,7 +832,7 @@ function MenuItemCard({ item, getCacheBustedUrl }) {
                                   </div>
                                   <span className="ml-2 text-sm font-medium text-gray-800">{extra.name}</span>
                                 </div>
-                                <span className="text-sm font-semibold">+Rs.{getPrice(extra.price)}</span>
+                                <span className="text-sm font-semibold">+PKR {getPrice(extra.price)}</span>
                               </div>
                             ))}
                           </div>
@@ -903,7 +903,7 @@ function MenuItemCard({ item, getCacheBustedUrl }) {
                                     <span className="ml-1 text-xs font-medium text-gray-800 truncate">{sideOrder.name}</span>
                                   </div>
                                   <div className="text-right">
-                                    <span className="text-xs font-medium text-brand-600">+Rs.{getPrice(sideOrder.price)}</span>
+                                    <span className="text-xs font-medium text-brand-600">+PKR {getPrice(sideOrder.price)}</span>
                                   </div>
                                 </div>
                               </div>
@@ -921,7 +921,7 @@ function MenuItemCard({ item, getCacheBustedUrl }) {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs text-gray-500">Total Price</p>
-                  <p className="text-xl font-bold text-gray-900">Rs.{calculateTotalPrice()}</p>
+                  <p className="text-xl font-bold text-gray-900">PKR {calculateTotalPrice()}</p>
                 </div>
                 <button
                   onClick={handleAddToCart}

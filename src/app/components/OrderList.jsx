@@ -1073,7 +1073,7 @@ const printDeliveryPaymentReceipt = useCallback(async (order) => {
                   <td className="p-2 border">{orderType}</td>
                   <td className="p-2 border w-24">{order.area}</td>
                   <td className="p-2 border">
-                    Rs. {extractValue(order.total) || 0}
+                    PKR {extractValue(order.total) || 0}
                   </td>
                   <td className="p-2 border">
                     <select

@@ -611,10 +611,10 @@ export default function AddFoodItemForm({
                   <div>
                     {v.previousPrice ? (
                       <>
-                        <span className="line-through text-gray-500">{v.previousPrice} Rs</span> {v.price} Rs
+                        <span className="line-through text-gray-500">{v.previousPrice} PKR</span> {v.price} PKR
                       </>
                     ) : (
-                      `${v.price} Rs`
+                      `${v.price} PKR`
                     )}
                   </div>
                   {v.imageFile && (
@@ -690,7 +690,7 @@ export default function AddFoodItemForm({
                 <div key={index} className="flex justify-between border rounded p-2 bg-gray-50">
                   <div>
                     <div className="font-medium">{extra.name}</div>
-                    <div className="text-gray-700">Price: {extra.price} Rs</div>
+                    <div className="text-gray-700">Price: {extra.price} PKR</div>
                     {extra.description && (
                       <div className="text-sm text-gray-600">{extra.description}</div>
                     )}
@@ -778,7 +778,7 @@ export default function AddFoodItemForm({
                 <div key={index} className="flex justify-between border rounded p-2 bg-gray-50">
                   <div>
                     <div className="font-medium">{sideOrder.name}</div>
-                    <div className="text-gray-700">Price: {sideOrder.price} Rs</div>
+                    <div className="text-gray-700">Price: {sideOrder.price} PKR</div>
                     <div className="text-sm text-gray-600">
                       Category: {sideOrder.category.charAt(0).toUpperCase() + sideOrder.category.slice(1)}
                     </div>

@@ -237,7 +237,7 @@ export default function DeliveryPickupModal() {
                         value={area._id}
                         className="text-gray-800"
                       >
-                        {area.name} • Rs. {area.fee}
+                        {area.name} • PKR {area.fee}
                       </option>
                     ))
                   ) : branch ? (

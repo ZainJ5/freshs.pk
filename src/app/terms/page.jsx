@@ -46,7 +46,7 @@ export default function TermsAndConditionsPage() {
           <section className="p-6 rounded-lg shadow-sm">
             <h2 className="text-2xl font-semibold mb-4">PAYMENTS PROCEDURE</h2>
             <p className="text-gray-70-relaxed">
-              You can choose Pay on Delivery for orders below Rs. 50,000. For orders above Rs. 50,000, the full amount must be paid online via credit card.
+              You can choose Pay on Delivery for orders below PKR 50,000. For orders above PKR 50,000, the full amount must be paid online via credit card.
             </p>
           </section>
 

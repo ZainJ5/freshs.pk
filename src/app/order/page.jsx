@@ -266,7 +266,7 @@ export default function OrdersPage() {
                             </span>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                            Rs. {order.total?.toLocaleString() || "N/A"}
+                            PKR {order.total?.toLocaleString() || "N/A"}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">

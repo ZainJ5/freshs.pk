@@ -485,9 +485,9 @@ export default function OrderDetailPage() {
                             <div className="text-sm text-gray-500">
                               <span className="font-medium">Qty: {displayQuantity}</span>
                               <span className="mx-2">·</span>
-                              <span>Price: Rs. {item.price}</span>
+                              <span>Price: PKR {item.price}</span>
                             </div>
-                            <p className="text-sm font-medium text-gray-900">Rs. {item.price * displayQuantity}</p>
+                            <p className="text-sm font-medium text-gray-900">PKR {item.price * displayQuantity}</p>
                           </div>
                         </div>
                       </div>
@@ -503,13 +503,13 @@ export default function OrderDetailPage() {
                     <dl className="space-y-3 text-sm">
                       <div className="flex justify-between text-gray-500">
                         <dt>Subtotal</dt>
-                        <dd className="text-gray-900 font-medium">Rs. {safeGetNumber(displayOrder.subtotal).toLocaleString()}</dd>
+                        <dd className="text-gray-900 font-medium">PKR {safeGetNumber(displayOrder.subtotal).toLocaleString()}</dd>
                       </div>
 
                       {safeGetNumber(displayOrder.tax) > 0 && (
                         <div className="flex justify-between text-gray-500">
                           <dt>Tax</dt>
-                          <dd className="text-gray-900 font-medium">Rs. {safeGetNumber(displayOrder.tax).toLocaleString()}</dd>
+                          <dd className="text-gray-900 font-medium">PKR {safeGetNumber(displayOrder.tax).toLocaleString()}</dd>
                         </div>
                       )}
 
@@ -523,8 +523,8 @@ export default function OrderDetailPage() {
                             {displayOrder.deliveryFee != null
                               ? (safeGetNumber(displayOrder.deliveryFee) === 0
                                   ? "FREE"
-                                  : `Rs. ${safeGetNumber(displayOrder.deliveryFee).toLocaleString()}`)
-                              : `Rs. ${(areaFee !== null ? areaFee : 0).toLocaleString()}`}
+                                  : `PKR ${safeGetNumber(displayOrder.deliveryFee).toLocaleString()}`)
+                              : `PKR ${(areaFee !== null ? areaFee : 0).toLocaleString()}`}
                           </dd>
                         </div>
                       )}
@@ -532,28 +532,28 @@ export default function OrderDetailPage() {
                       {safeGetNumber(displayOrder.globalDiscount) > 0 && (
                         <div className="flex justify-between text-green-600">
                           <dt>Global Discount {displayOrder.globalDiscountPercentage ? `(${displayOrder.globalDiscountPercentage}%)` : ''}</dt>
-                          <dd>- Rs. {safeGetNumber(displayOrder.globalDiscount).toLocaleString()}</dd>
+                          <dd>- PKR {safeGetNumber(displayOrder.globalDiscount).toLocaleString()}</dd>
                         </div>
                       )}
 
                       {displayOrder.promoCode && safeGetNumber(displayOrder.promoDiscount) > 0 && (
                         <div className="flex justify-between text-green-600">
                           <dt>Promo Discount ({displayOrder.promoCode})</dt>
-                          <dd>- Rs. {safeGetNumber(displayOrder.promoDiscount).toLocaleString()}</dd>
+                          <dd>- PKR {safeGetNumber(displayOrder.promoDiscount).toLocaleString()}</dd>
                         </div>
                       )}
 
                       {safeGetNumber(displayOrder.totalDiscount || displayOrder.discount) > 0 && (
                         <div className="flex justify-between text-green-600 font-medium">
                           <dt>Total Discount</dt>
-                          <dd>- Rs. {safeGetNumber(displayOrder.totalDiscount || displayOrder.discount).toLocaleString()}</dd>
+                          <dd>- PKR {safeGetNumber(displayOrder.totalDiscount || displayOrder.discount).toLocaleString()}</dd>
                         </div>
                       )}
 
                       <div className="pt-3 mt-1 border-t border-gray-200">
                         <div className="flex justify-between">
                           <dt className="text-base font-medium text-gray-900">Total</dt>
-                          <dd className="text-base font-bold text-gray-900">Rs. {safeGetNumber(displayOrder.total).toLocaleString()}</dd>
+                          <dd className="text-base font-bold text-gray-900">PKR {safeGetNumber(displayOrder.total).toLocaleString()}</dd>
                         </div>
                       </div>
                     </dl>
@@ -794,7 +794,7 @@ export default function OrderDetailPage() {
                           <p className="font-medium text-gray-900">{extractedArea}</p>
                           {areaFee !== null && (
                             <span className="ml-2 text-xs bg-brand-50 text-brand-700 px-2 py-1 rounded-full">
-                              Rs. {areaFee} fee
+                              PKR {areaFee} fee
                             </span>
                           )}
                         </div>
@@ -872,7 +872,7 @@ export default function OrderDetailPage() {
                 {displayOrder.changeRequest && (
                   <div>
                     <p className="text-xs text-gray-500">Change Request</p>
-                    <p className="font-medium text-gray-900">Rs. {displayOrder.changeRequest}</p>
+                    <p className="font-medium text-gray-900">PKR {displayOrder.changeRequest}</p>
                   </div>
                 )}
                 {displayOrder.paymentInstructions && (

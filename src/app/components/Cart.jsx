@@ -14,7 +14,7 @@ export default function CartDrawer({ isOpen, onClose }) {
 
   const handleCheckout = () => {
     if (total < ORDER_MINIMUMS.DEFAULT) {
-      toast.error(`Minimum order value is Rs. ${ORDER_MINIMUMS.DEFAULT}.`);
+      toast.error(`Minimum order value is PKR ${ORDER_MINIMUMS.DEFAULT}.`);
       return;
     }
     router.push('/checkout');
@@ -129,7 +129,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                             <p className="text-sm text-gray-600 font-medium">{item.type}</p>
                           )}
                           <p className="text-brand-700 font-medium mt-1">
-                            Rs. {formatPrice(totalItemPrice)}
+                            PKR {formatPrice(totalItemPrice)}
                           </p>
                         </div>
                         <div className="flex items-center border border-gray-200 rounded-full shadow-sm bg-white flex-shrink-0">
@@ -161,7 +161,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                                   <div key={j} className="flex justify-between text-xs">
                                     <span className="text-gray-600">• {modItem.name}</span>
                                     <span className="text-gray-600 font-medium">
-                                      +Rs. {formatPrice(modItem.price)}
+                                      +PKR {formatPrice(modItem.price)}
                                     </span>
                                   </div>
                                 ))}
@@ -177,7 +177,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                             <div key={i} className="flex justify-between text-xs">
                               <span className="text-gray-600">+ {addon.name}</span>
                               <span className="text-gray-600 font-medium">
-                                +Rs. {formatPrice(addon.price || 0)}
+                                +PKR {formatPrice(addon.price || 0)}
                               </span>
                             </div>
                           ))}
@@ -191,7 +191,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                             <div key={i} className="flex justify-between text-xs">
                               <span className="text-gray-600">• {extra.name}</span>
                               <span className="text-gray-600 font-medium">
-                                +Rs. {formatPrice(extra.price || 0)}
+                                +PKR {formatPrice(extra.price || 0)}
                               </span>
                             </div>
                           ))}
@@ -206,7 +206,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                             <div key={i} className="flex justify-between text-xs">
                               <span className="text-gray-600">• {sideOrder.name}</span>
                               <span className="text-gray-600 font-medium">
-                                +Rs. {formatPrice(sideOrder.price || 0)}
+                                +PKR {formatPrice(sideOrder.price || 0)}
                               </span>
                             </div>
                           ))}
@@ -246,7 +246,7 @@ export default function CartDrawer({ isOpen, onClose }) {
             <div className="p-4 space-y-3">
               <div className="flex justify-between items-center text-lg">
                 <span className="font-bold text-gray-900">Subtotal</span>
-                <span className="font-bold text-brand-800">Rs. {formatPrice(total)}</span>
+                <span className="font-bold text-brand-800">PKR {formatPrice(total)}</span>
               </div>
               <button
                 onClick={handleCheckout}
