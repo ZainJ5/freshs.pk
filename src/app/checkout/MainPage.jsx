@@ -146,7 +146,7 @@ export default function CheckoutPage() {
 
   const easypaisaDetails = {
     title: "EasyPaisa Payment Details",
-    accountNumber: "03172729491",
+    accountNumber: "03172729591",
     accountName: "Muhammad Jamal",
     instructions:
       "Transfer using the EasyPaisa app and upload a screenshot of your transaction.",
