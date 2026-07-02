@@ -1,6 +1,9 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
-export const useCartStore = create((set, get) => ({
+export const useCartStore = create(
+  persist(
+    (set, get) => ({
   items: [],
   total: 0,
   itemCount: 0,
@@ -192,4 +195,15 @@ export const useCartStore = create((set, get) => ({
     }),
 
   clearCart: () => set({ items: [], total: 0, itemCount: 0 }),
-}));
+    }),
+    {
+      name: 'fresh-cart',
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        items: state.items,
+        total: state.total,
+        itemCount: state.itemCount,
+      }),
+    }
+  )
+);
