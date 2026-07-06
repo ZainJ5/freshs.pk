@@ -154,7 +154,7 @@ export default function CheckoutPage() {
 
   const jazzcashDetails = {
     title: "JazzCash Payment Details",
-    accountNumber: "03172729491",
+    accountNumber: "03172729591",
     accountName: "Muhammad Jamal",
     instructions:
       "Pay via JazzCash and upload a screenshot of your payment confirmation.",
